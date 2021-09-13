@@ -6,52 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-categories = [ 'Ruby', 'Ruby on Rails', 'HTML', 'SQL' ]
+categories = Category.create!([ { title: 'Ruby' }, 
+                                { title: 'Ruby on Rails' }, 
+                                { title: 'HTML' }, 
+                                { title: 'SQL' }])
 
-users = [[ 'test_user', 'vbnasd123', 'author' ],
-         [ 'admin', 'superadmin', 'admin' ],
-         [ 'supervisor', 'superpuperviser', 'supervisor' ]]
+users = User.create!([{ username: 'test_user', password: 'vbnasd123', role: 'author' },
+                      { username: 'admin', password: 'superadmin', role: 'admin' },
+                      { username: 'supervisor', password: 'superpuperviser', role: 'supervisor' }])
 
-tests = [[ 'Ruby Basics', 1, 1],
-         [ 'Ruby on Rails Basics', 2, 2],
-         [ 'HTML Basics', 3, 2],
-         [ 'SQL Basics', 4, 1],
-         [ 'Ruby Advanced', 1, 2 ]]
+tests = Test.create!([{ title: 'Ruby Basics', level: 1, category_id: categories[0].id },
+                      { title: 'Ruby on Rails Basics', level: 2, category_id: categories[1].id},
+                      { title: 'HTML Basics', level: 3, category_id: categories[2].id},
+                      { title: 'SQL Basics', level: 4, category_id: categories[3].id},
+                      { title: 'Ruby Advanced', level: 1, category_id: categories[0].id }])
 
-questions = [[ 'What does puts function mean?', 1 ],
-             [ 'What function helps to quit the loop?', 5 ],
-             [ 'Whats the decryption for MVC?', 2 ],
-             [ 'Which function stands for selecting values?', 4 ],
-             [ 'What section head means?', 3 ]]
+questions = Question.create!([{ body: 'What does puts function mean?', test_id: tests[0].id },
+                              { body: 'What function helps to quit the loop?', test_id: tests[4].id },
+                              { body: 'Whats the decryption for MVC?', test_id: tests[1].id },
+                              { body: 'Which function stands for selecting values?', test_id: tests[3].id },
+                              { body: 'What section head means?', test_id: tests[2].id }])
 
-answers = [[ 'It gets values putted by user', 1, false ],
-           [ 'It outputs values', 1, true ],
-           [ 'exit', 2, false ],
-           [ 'quit', 2, false ],
-           [ 'break', 2, true ],
-           [ 'Model View Controller', 3, true ],
-           [ 'Microsoft Visual Console', 3, false ],
-           [ 'SELECT', 4, true ],
-           [ 'INSERT', 4, false ],
-           [ 'Header of the HTML page', 5, true ],
-           [ 'Bold text in HTML page', 5, false ]]
-
-categories.each do |title|
-  Category.create( title: title )
-end
-
-users.each do |username, password, role|
-  User.create( username: username, password: password, role: role )
-end
-
-tests.each do |title, level, categoriy_id|
-  Test.create( title: title, level: level, category_id: categoriy_id )
-end
-
-questions.each do |body, test_id|
-  Question.create( body: body, test_id: test_id )
-end
-
-answers.each do |body, question_id, correct|
-  Answer.create( body: body, question_id: question_id, correct: correct )
-end
+answers = Answer.create!([{ body: 'It gets values putted by user', question_id: questions[0].id},
+                          { body: 'It outputs values', question_id: questions[0].id, correct: true },
+                          { body: 'exit', question_id: questions[1].id },
+                          { body: 'quit', question_id: questions[1].id },
+                          { body: 'break', question_id: questions[1].id, correct: true },
+                          { body: 'Model View Controller', question_id: questions[2].id, correct: true },
+                          { body: 'Microsoft Visual Console', question_id: questions[2].id },
+                          { body: 'SELECT', question_id: questions[3].id, correct: true },
+                          { body: 'INSERT', question_id: questions[3].id },
+                          { body: 'Header of the HTML page', question_id: questions[4].id, correct: true },
+                          { body: 'Bold text in HTML page', question_id: questions[4].id }])
