@@ -15,11 +15,11 @@ users = User.create!([{ username: 'test_user', password: 'vbnasd123', role: 'aut
                       { username: 'admin', password: 'superadmin', role: 'admin' },
                       { username: 'supervisor', password: 'superpuperviser', role: 'supervisor' }])
 
-tests = Test.create!([{ title: 'Ruby Basics', level: 1, category_id: categories[0].id },
-                      { title: 'Ruby on Rails Basics', level: 2, category_id: categories[1].id},
-                      { title: 'HTML Basics', level: 3, category_id: categories[2].id},
-                      { title: 'SQL Basics', level: 4, category_id: categories[3].id},
-                      { title: 'Ruby Advanced', level: 1, category_id: categories[0].id }])
+tests = Test.create!([{ title: 'Ruby Basics', level: 1, category_id: categories[0].id, creator_id: users[0].id },
+                      { title: 'Ruby on Rails Basics', level: 2, category_id: categories[1].id, creator_id: users[1].id },
+                      { title: 'HTML Basics', level: 3, category_id: categories[2].id, creator_id: users[0].id },
+                      { title: 'SQL Basics', level: 4, category_id: categories[3].id, creator_id: users[1].id },
+                      { title: 'Ruby Advanced', level: 1, category_id: categories[0].id, creator_id: users[0].id }])
 
 questions = Question.create!([{ body: 'What does puts function mean?', test_id: tests[0].id },
                               { body: 'What function helps to quit the loop?', test_id: tests[4].id },
