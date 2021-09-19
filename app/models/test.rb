@@ -5,7 +5,8 @@ class Test < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: :creator_id
   has_and_belongs_to_many :users, through: :tests_users
 
-  def self.tests_by_category(category_title)
-    Test.joins(:category).where(category: {title: category_title}).order("title DESC").pluck(:category_title)
-  end
+  scope :easy, -> { where(level: 0..1) }
+  scope :medium, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
+  scope :tests_by_category, -> (title) { joins(:category).where(category: {title: title}).order(title: :desc).pluck(:title) }
 end
