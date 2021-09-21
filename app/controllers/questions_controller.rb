@@ -5,14 +5,14 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = @test.questions
-    render inline: "<% @questions.each do |question| %> id:<%= question.id %> / <%= question.body %> %>"
+    render inline: "<% @questions.each do |question| %> id:<%= question.id %> / <%= question.body %> <% end %>"
   end
 
   def new
   end
 
   def show
-    render inline: 'ID: <%= @question.id %> -- <%= @question.body %><li><%= button_to 'Destroy', question_path(q), :method => :delete %>'
+    render inline: "ID: <%= @question.id %> -- <%= @question.body %> <li> <%= button_to 'Destroy', question_path(q), :method => :delete %>"
   end
 
   def create
