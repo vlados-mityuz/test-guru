@@ -6,7 +6,7 @@ class Test < ApplicationRecord
   has_and_belongs_to_many :users, through: :tests_users
 
   validates :title, presence: true, uniqueness: { scope: :level }
-  validates :level, numerically: { greater_than: 0 }, uniqueness: { scope: :title }
+  validates :level, numericality: { greater_than: 0 }, uniqueness: { scope: :title }
 
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
