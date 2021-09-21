@@ -16,13 +16,17 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = @test.questions.new(params.require(:question).permit(:body, :test_id))
-    question.save
-    render plain: question.inspect
+    @question = @test.questions.new(question_params)
+    if question.save
+      render plain: question.inspect
+    else
+      render :new
+    end
   end
 
   def destroy
     @question.delete
+    render plain: "Вопрос удалён"
   end
 
   private
@@ -37,5 +41,9 @@ class QuestionsController < ApplicationController
 
   def rescue_with_question_not_found
     render plain: "Запись c id: #{params[:id]} не найдена."
+  end
+
+  def question_params
+    params.require(:question).permit(:body, :test_id)
   end
 end
