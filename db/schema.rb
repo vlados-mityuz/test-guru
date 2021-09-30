@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_144551) do
+ActiveRecord::Schema.define(version: 2021_09_30_152115) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_144551) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "email"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "answers", "questions"
