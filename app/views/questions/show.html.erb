@@ -5,12 +5,14 @@
 </p>
 
 <h2>Answers</h2>
-
-<%= link_to 'New answer', new_question_answer_path(@question) %>
+<% if logged_in? %>
+  <%= link_to 'New answer', new_question_answer_path(@question) %>
+<% end %>
 
 <ol>
   <%= render @question.answers %>
 </ol>
-
-<%= link_to 'Edit', edit_question_path(@question) %>
+<% if logged_in? %>
+  <%= link_to 'Edit', edit_question_path(@question) %>
+<% end %>
 <%= link_to 'Back', test_path(@question.test) %>
