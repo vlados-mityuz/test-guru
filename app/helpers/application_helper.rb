@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def flash_messages
     flash.map do |key, msg|
-      msg
+      concat(content_tag(:div, msg, :id => key, :class => "flash alert-#{key}"))
     end.join
   end
 end
