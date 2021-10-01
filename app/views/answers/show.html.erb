@@ -12,7 +12,5 @@
 	<b>Correct:</b>
 	<%= @answer.correct %>
 </p>
-<% if logged_in? %>
-	<%= link_to 'Edit', edit_answer_path(@answer) %>
-<% end %>
+<%= link_to 'Edit', edit_answer_path(@answer) %>
 <%= link_to 'Back', question_path(@answer.question) %>
