@@ -11,11 +11,15 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p class="nav user">Welcome, <b><%= current_user.username %> <%= link_to 'Guru', root_path %> <%= link_to 'Log out', sign_out_path, method: :delete %></b></p>
+    <% if signed_in? %>
+      <p class="nav user">
+        Welcome, <b><%= current_user.email %> <%= link_to 'Guru', root_path %> <%= link_to 'Log out', destroy_user_session_path, method: :delete %></b></p>
     <% else %>
       <p class="nav user"><%= link_to 'Register', signup_path %> <%= link_to 'Log in', login_path %></p>
     <% end %>
+
+    <%= render 'shared/flash' %>
+
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>
