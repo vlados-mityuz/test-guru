@@ -1,23 +1,23 @@
 <p>
-	<strong>Title:</strong>
+	<strong><%= t('helpers.label.test.title') %>:</strong>
 	<%= @test.title %>
 </p>
 
 <p>
-	<strong>Level:</strong>
+	<strong><%= t('helpers.label.test.level') %>:</strong>
 	<%= @test.level %>
 </p>
 
-<h2>Questions:</h2>
+<h2><%= t('helpers.label.test.questions') %>:</h2>
 
-<%= link_to 'New Question', new_admin_test_question_path(@test) %>
+<%= link_to t('helpers.question.new'), new_admin_test_question_path(@test) %>
 
 <p>
-	<strong>Quantity of questions:</strong>
+	<strong><%= t('helpers.label.question.quantity') %>:</strong>
 	<%= @test.questions.count %>
 </p>
 
 <%= render 'shared/questions', test: @test %>
 
-<%= link_to 'Edit', edit_admin_test_path(@test) %>
-<%= link_to 'Back', admin_tests_path %>
+<%= link_to t('helpers.edit'), edit_admin_test_path(@test) %>
+<%= link_to t('helpers.back'), admin_tests_path %>
