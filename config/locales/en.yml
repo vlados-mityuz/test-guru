@@ -46,6 +46,9 @@ en:
       header: "The %{title} test was completed!"
       success: "You successfully comleted the test!"
       failure: "You didn't comlete the test!"
+    gist:
+      success: "Gist successfully created!"
+      success: "An error occured while saving gist"
 
   admin:
     tests:
