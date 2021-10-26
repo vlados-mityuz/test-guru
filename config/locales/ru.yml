@@ -58,6 +58,12 @@ ru:
         success: "Тест успешно создан"
       index:
         header: "Доступные тесты"
+      gists:
+        index:
+          header: "Все gist"
+          question: "Вопрос"
+          url: "GitHub Gists"
+          user: "Пользователь"
 
   tests_mailer:
     completed_test:

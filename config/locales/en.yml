@@ -56,6 +56,12 @@ en:
         success: "Test was successfuly created"
       index:
         header: "Tricky tests"
+      gists:
+        index:
+          header: "All gists"
+          question: "Question"
+          url: "GitHub Gists"
+          user: "User"
 
   tests_mailer:
     completed_test:
