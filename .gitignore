@@ -42,3 +42,5 @@ yarn-debug.log*
 # Ignore DS_Store changes
 
 *.DS_Store
+
+/set_github_token.env
