@@ -8,6 +8,10 @@
 	<%= @test_passage.current_question.body %>
 </p>
 
+<%= content_tag :progress, 'Progress', 
+                class: 'progress-bar',
+                data: { value: @test_passage.question_count, max: @test_passage.test.questions.count }
+
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
 	<%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
 		<p>
