@@ -10,8 +10,10 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "../../assets/javasripts/utilities/sorting"
-import "../../assets/javasripts/utilities/confirm_password"
+import "utilities/sorting"
+import "utilities/confirm_password"
+import "utilities/form_inline"
+import "utilities/progress_bar"
 
 Rails.start()
 Turbolinks.start()
