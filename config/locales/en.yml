@@ -55,6 +55,8 @@ en:
         success: "Test was successfuly created"
       index:
         header: "Tricky tests"
+      form_inline:
+        submit: "OK"
       gists:
         index:
           header: "All gists"
