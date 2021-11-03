@@ -1,5 +1,5 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :set_tests, only: %i[index update_inline]
+  before_action :find_tests, only: %i[index update_inline]
   before_action :find_test, only: %i[show edit update destroy start update_inline]
 
   def index
@@ -49,7 +49,7 @@ class Admin::TestsController < Admin::BaseController
 
   private 
 
-  def set_tests
+  def find_tests
     @tests = Test.all
   end
 
