@@ -13,10 +13,10 @@ function formInlineLinkHandler(event) {
 	event.preventDefault()
 
 	var testId = this.dataset.testId
-	formInlineLinkHandler(testId)
+	formInlineHandler(testId)
 }
 
-function formInlineLinkHandler(testId) {
+function formInlineHandler(testId) {
 	var link = document.querySelector('.form-inline-link[data-test-id="' + testId + '"]')
 	var $testTitle = $('.form-title-link[data-test-id="' + testId + '"]')
 	var $formInline = $('.form-inline[data-test-id="' + testId + '"]')
