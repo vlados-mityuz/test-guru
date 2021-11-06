@@ -44,3 +44,6 @@ yarn-debug.log*
 *.DS_Store
 
 /set_github_token.env
+
+# Ignore logfile
+logfile
