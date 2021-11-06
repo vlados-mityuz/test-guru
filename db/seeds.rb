@@ -11,9 +11,9 @@ categories = Category.create!([ { title: 'Ruby' },
                                 { title: 'HTML' }, 
                                 { title: 'SQL' }])
 
-users = User.create!([{ username: 'test_user', password: 'vbnasd123', role: 'author' },
-                      { username: 'admin', password: 'superadmin', role: 'admin' },
-                      { username: 'supervisor', password: 'superpuperviser', role: 'supervisor' }])
+users = User.create!([{ first_name: 'Test', last_name: 'User', email: 'test_user@guru.com', password: 'vbnasd123', type: 'Admin' },
+                      { first_name: 'Admin', last_name: 'Admin', email: 'admin@guru.com', password: 'superadmin', type: 'Admin' },
+                      { first_name: 'First', last_name: 'User', email: '1@guru.com',password: 'superpuperviser', type: 'User' }])
 
 tests = Test.create!([{ title: 'Ruby Basics', level: 1, category_id: categories[0].id, creator_id: users[0].id },
                       { title: 'Ruby on Rails Basics', level: 2, category_id: categories[1].id, creator_id: users[1].id },
