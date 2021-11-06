@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   belongs_to :category
   has_many :questions
-  belongs_to :creator, class_name: 'User', foreign_key: :creator_id
+  belongs_to :creator, class_name: 'User', foreign_key: :creator_id, optional: true
   has_many :test_passages
   has_many :users, through: :test_passages
 
@@ -18,3 +18,4 @@ class Test < ApplicationRecord
     Test.category_title(category_title).order("title DESC").pluck(:category_title)
   end
 end
+
