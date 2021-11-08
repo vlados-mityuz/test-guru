@@ -28,6 +28,9 @@ ru:
     select:
       prompt: "Выберите"
 
+  footer:
+    feedback: "Обратная связь"
+
   shared:
     errors:
       header:
@@ -65,6 +68,14 @@ ru:
           question: "Вопрос"
           url: "GitHub Gists"
           user: "Пользователь"
+
+  feedback:
+    notice: "Сообщение отправлено!"
+    index:
+      send: "Отправить"
+      header: "Отправить сообщение"
+      title: "Заголовок"
+      body: "Сообщение"
 
   tests_mailer:
     completed_test:
