@@ -5,6 +5,6 @@ class FeedbackMailer < ApplicationMailer
     @email = current_user.email
     @message = params[:email]
 
-    mail to: thenoma1@gmail.com
+    mail to: 'thenoma1@gmail.com'
   end
 end
