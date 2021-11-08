@@ -28,6 +28,9 @@ en:
     select:
       prompt: "Please select"
 
+  footer:
+    feedback: "Feedback"
+
   shared:
     errors:
       header:
@@ -63,6 +66,14 @@ en:
           question: "Question"
           url: "GitHub Gists"
           user: "User"
+
+  feedback:
+    notice: "Feedback sent"
+    index:
+      send: "Send"
+      header: "Send feedback"
+      title: "Title"
+      body: "Body"
 
   tests_mailer:
     completed_test:
