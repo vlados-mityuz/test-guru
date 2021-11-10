@@ -1,4 +1,4 @@
-<h1><%= t.('header', title: @test_passage.test.title) %></h1>
+<h1><%= t('.header', title: @test_passage.test.title) %></h1>
 <% if @test_passage.success? %>
 	<font color="green"><%= t('.success') %></font>
 <% else %>
