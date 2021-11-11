@@ -42,6 +42,8 @@ en:
       header: "Tricky tests"
     test:
       start: "Start"
+    rescue:
+      no_questions: "There are no questions in the test"
 
   test_passages:
     result:

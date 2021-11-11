@@ -43,7 +43,9 @@ ru:
     index:
       header: "Доступные тесты"
     test:
-      start: "Начать"
+      start: "Начать"    
+    rescue:
+      no_questions: "В тесте нет вопросов"
 
   test_passages:
     result:
