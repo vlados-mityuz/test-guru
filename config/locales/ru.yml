@@ -54,7 +54,7 @@ ru:
       failure: "Вы не завершили тест!"
     gist:
       success: "Gist успешно сохранен!"
-      success: "Во время сохранения gist призошла ошибка"
+      failure: "Во время сохранения gist призошла ошибка"
 
   admin:
     tests:

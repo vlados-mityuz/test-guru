@@ -52,7 +52,7 @@ en:
       failure: "You didn't comlete the test!"
     gist:
       success: "Gist successfully created!"
-      success: "An error occured while saving gist"
+      failure: "An error occured while saving gist"
 
   admin:
     tests:
