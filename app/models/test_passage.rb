@@ -42,8 +42,12 @@ class TestPassage < ApplicationRecord
   
   def correct_answer?(answer_ids)
     correct_answer_count = correct_answers.count
-    (correct_answer_count == correct_answers.where(id: answer_ids).count) &&
-    correct_answer_count == answer_ids.count
+    if answer_ids.nil?
+      correct_answer_count = 0
+    else
+      (correct_answer_count == correct_answers.where(id: answer_ids).count) &&
+      correct_answer_count == answer_ids.count
+    end
   end
 
   def correct_answers
