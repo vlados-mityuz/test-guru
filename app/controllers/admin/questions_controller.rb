@@ -34,7 +34,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def destroy
-    @question.delete
+    @question.destroy
     render plain: "Вопрос удалён"
   end
 
