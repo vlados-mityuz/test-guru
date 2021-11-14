@@ -46,6 +46,7 @@ ru:
       start: "Начать"    
     rescue:
       no_questions: "В тесте нет вопросов"
+      no_answers: "В единственном вопросе нет ответов"
 
   test_passages:
     result:

@@ -44,6 +44,7 @@ en:
       start: "Start"
     rescue:
       no_questions: "There are no questions in the test"
+      no_answers: "There are no answers in the only question"
 
   test_passages:
     result:

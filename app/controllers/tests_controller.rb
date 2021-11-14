@@ -8,9 +8,13 @@ class TestsController < ApplicationController
 
 
   def start
-    if @test.questions.present?
-      current_user.tests.push(@test)
-      redirect_to current_user.test_passage(@test)
+    if @test.questions.any?
+      if @test.questions.count == 1 && @test.questions.first.answers.empty?
+        redirect_to tests_path, alert: t('.rescue.no_answers')
+      else
+        current_user.tests.push(@test)
+        redirect_to current_user.test_passage(@test)
+      end
     else
       redirect_to tests_path, alert: t('.rescue.no_questions')
     end
@@ -21,5 +25,4 @@ class TestsController < ApplicationController
   def find_test
     @test = Test.find(params[:id])
   end
-
 end
