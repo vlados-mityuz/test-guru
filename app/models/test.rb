@@ -3,7 +3,7 @@ class Test < ApplicationRecord
   has_many :questions, dependent: :destroy
   belongs_to :creator, class_name: 'User', foreign_key: :creator_id, optional: true
   has_many :test_passages, dependent: :destroy
-  has_many :users, through: :test_passages, dependent: :destroy
+  has_many :users, through: :test_passages
 
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { greater_than: 0 }, uniqueness: { scope: :title }
