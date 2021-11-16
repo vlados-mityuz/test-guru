@@ -52,7 +52,7 @@ en:
       success: "You successfully comleted the test!"
       failure: "You didn't comlete the test!"
     gist:
-      success: "Gist successfully created! You can check it <a href='%{url}'>here</a>"
+      success: "Gist successfully created! %{url}'"
       failure: "An error occured while saving gist"
 
   admin:
