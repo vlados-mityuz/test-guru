@@ -16,7 +16,7 @@ class TestPassagesController < ApplicationController
 
     if new_gist.success?
       current_user.gists.create(question: @test_passage.current_question, url: result.html_url )
-      flash_options = { notice: t('.success', url: link_to(result.html_url)) }
+      flash_options = { notice: t('.success', url: result.html_url) }
     else
       flash_options = { alert: t('.failure') }
     end
