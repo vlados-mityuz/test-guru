@@ -5,6 +5,7 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
   before_validation :before_validation_set_next_question, on: :update
+  before_update :set_success
 
   SUCCEED_LEVEL = 0.85
 
@@ -56,6 +57,10 @@ class TestPassage < ApplicationRecord
 
   def before_validation_set_next_question
     self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def set_success
+    self.successful = success? if completed?
   end
 
 end
