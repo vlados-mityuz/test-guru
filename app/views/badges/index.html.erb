@@ -1,0 +1,47 @@
+<h1>All Badges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Badge</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @badges.each do |badge| %>
+      <tr>
+        <td><%= badge.title %></td>
+        <td><%= image_tag badge.image_url, style: 'height:50px;width:80px' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>My Badges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Badge</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_badges.each do |user_badge| %>
+      <tr>
+        <td><%= user_badge.title %></td>
+        <td><%= image_tag user_badge.image_url, style: 'height:50px;width:80px' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Home', root_path %>
