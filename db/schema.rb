@@ -26,10 +26,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_175958) do
 
   create_table "badges", force: :cascade do |t|
     t.string "title", null: false
-    t.string "description"
-    t.string "file_link"
-    t.string "rule_type", null: false
-    t.string "rule_option"
+    t.string "image_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
