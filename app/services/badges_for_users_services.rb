@@ -4,27 +4,32 @@ class BadgesForUsersServices
     @test_passage = TestPassage.find(test_passage)
     @user = @test_passage.user
     @test = @test_passage.test
+    @badges = Badge.where.not(id: @user.badges.ids)
   end
 
   def call
-    Badge.all.each do |badge|
-      @user.badges << badge if badge.send( "#{badge.rule}_award?", badge_value )
-    end
+    @badges.select { |badge| send(badge.badge_type, badge.option) }
   end
 
-  def badge_value
-    {
-      passed_from_first_attempt: passed_from_first_attempt?,
-      all_ruby_advanced_tests_completed: all_sql_advanced_tests_completed?
-    }
+  private
+
+  def category?(category)
+    all = Test.where(category: category)
+    passed = all.tests_passed_by_user(@test_passage.user)
+    all.present? && all.ids.uniq.sort == passed.ids.uniq.sort
   end
 
-  def passed_from_first_attempt?
-    @test_passage.test_attempts.count <= 1 && @test_passage.successful
+  def first_try?(test_title)
+     @test_passage.success? && TestPassage.where("test_passages.user_id = ? AND test_id = ?", @user, @test).count == 1
   end
 
-  def all_sql_advanced_tests_completed?
-    @test.category.title == 'SQL' && @test.category.tests.count == @test_passage.same_categories_tests_passed.count
+  def level?(level)
+    all = Test.where(level: level)
+    passed = all.tests_passed_by_user(@test_passage.user)
+    all.present? && all.ids.uniq.sort == passed.ids.uniq.sort
   end
 
+  def count_tests_success(test_ids)
+    @user.test_passages.where(test_id: test_ids).select(&:success?).size
+  end
 end
