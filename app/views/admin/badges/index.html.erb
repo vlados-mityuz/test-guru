@@ -15,7 +15,7 @@
     <% @badges.each do |badge| %>
       <tr>
         <td><%= badge.title %></td>
-        <td><%= image_tag badge.image_url, style: 'height:50px;width:80px;' %></td>
+        <td><%= tag.img src: image_url(badge.image_url), style: 'height:50px;width:80px;' %></td>
         <td><%= link_to 'Show', [:admin, badge] %></td>
         <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
         <td><%= link_to 'Destroy', [:admin, badge], method: :delete, data: { confirm: 'Are you sure?' } %></td>
