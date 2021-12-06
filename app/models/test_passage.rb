@@ -9,10 +9,6 @@ class TestPassage < ApplicationRecord
 
   SUCCEED_LEVEL = 0.85
 
-  def test_attempts
-    TestPassage.joins(:test).where(test_id: test.id, user_id: user.id)
-  end
-
   def same_categories_tests_passed
     user.test_passages.joins(:test).where(successful: true).where('tests.category_id = ?', test.category.id).distinct
   end
