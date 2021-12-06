@@ -69,6 +69,10 @@ en:
           question: "Question"
           url: "GitHub Gists"
           user: "User"
+    badges:
+      first_try?: "Pass the test on the first try"
+      category?: "Pass all tests in the category"
+      level?: "Pass all level tests"
 
   feedback:
     notice: "Feedback sent"
