@@ -8,14 +8,20 @@ class BadgesForUsersServices
   end
 
   def call
-    @badges.select { |badge| send(badge.badge_type, badge.option) }
+    Badge.all.each do |badge|
+      @user.badges << badge if send(badge.badge_type, badge.option)
+    end
+  end
+
+  def award_badge!(badge)
+    @test_passage.badges_awardings.create!(badge: badge, user: @test_passage.user)
   end
 
   private
 
   def category?(category)
     all = Test.where(category: category)
-    passed = all.tests_passed_by_user(@test_passage.user)
+    passed = all.unique_completed_test_ids(all)
     all.present? && all.ids.uniq.sort == passed.ids.uniq.sort
   end
 
@@ -25,11 +31,11 @@ class BadgesForUsersServices
 
   def level?(level)
     all = Test.where(level: level)
-    passed = all.tests_passed_by_user(@test_passage.user)
+    passed = all.unique_completed_test_ids(all)
     all.present? && all.ids.uniq.sort == passed.ids.uniq.sort
   end
 
-  def count_tests_success(test_ids)
-    @user.test_passages.where(test_id: test_ids).select(&:success?).size
+  def unique_completed_test_ids(tests)
+    @user.test_passages.where(passed: true, test: tests)
   end
 end
