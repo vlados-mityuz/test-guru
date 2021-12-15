@@ -40,12 +40,7 @@ class TestPassagesController < ApplicationController
   private
 
   def assign_badges
-    badges = BadgesForUsersServices.new(@test_passage.id).call
-
-    return if badges.empty?
-
-    current_user.badges << badges
-    flash[:notice] = 'You have a new badges, check it out!'
+    BadgesForUsersServices.new(@test_passage.id).call
   end
 
   def set_test_passage
