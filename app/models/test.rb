@@ -12,8 +12,6 @@ class Test < ApplicationRecord
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
   scope :category_title, -> (category_title) { joins(:category).where(category: {title: category_title}) }
-  scope :tests_passed_by_user, -> (user) { joins(:users).where("users.id = :user_id AND test_passages.passed = :passed", user_id: user.id, passed: true)}
-
 
   def self.tests_by_category(category_title)
     Test.category_title(category_title).order("title DESC").pluck(:category_title)
