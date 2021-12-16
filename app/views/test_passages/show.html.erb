@@ -8,6 +8,14 @@
 	<%= @test_passage.current_question.body %>
 </p>
 
+<% if @test_passage.test.time? %>
+  <%= content_tag :div,
+                  class: 'timer',
+                  data: { remaining_time: @test_passage.remaining_time } do %>
+    <%= content_tag :span, "Remaining time: #{@test_passage.remaining_time} seconds", class: 'timer_content' %>
+  <% end %>
+<% end %>
+
 <%= content_tag :progress, 'Progress', 
                 class: 'progress-bar',
                 data: { value: @test_passage.current_question_count - 1, max: @test_passage.test.questions.count } %>
