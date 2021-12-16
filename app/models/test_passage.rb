@@ -39,6 +39,10 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).where('id < ?', current_question.id).count + 1
   end
 
+  def remaining_time
+    (test.time - (Time.now - created_at).seconds).to_i
+  end
+
   private
 
   def total
