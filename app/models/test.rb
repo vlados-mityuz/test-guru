@@ -7,6 +7,7 @@ class Test < ApplicationRecord
 
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { greater_than: 0 }, uniqueness: { scope: :title }
+  validates :time, numericality: { only_integer: true, greater_than: 0 }
 
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
@@ -15,6 +16,10 @@ class Test < ApplicationRecord
 
   def self.tests_by_category(category_title)
     Test.category_title(category_title).order("title DESC").pluck(:category_title)
+  end
+
+  def time?
+    time.positive?
   end
 end
 
