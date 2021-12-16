@@ -3,7 +3,7 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result gist]
 
   def show
-
+    redirect_if_time_expired
   end
 
   def result
@@ -28,6 +28,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      redirect_if_time_expired
       @test_passage.update_test_passage_status
       assign_badges
       TestsMailer.completed_test(@test_passage).deliver_now
@@ -45,5 +46,11 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def redirect_if_time_expired
+    return unless @test_passage.remaining_time <= 0
+
+    redirect_to(result_test_passage_path(@test_passage), alert: 'Time is over')
   end
 end
