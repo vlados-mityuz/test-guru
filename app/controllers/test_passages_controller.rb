@@ -27,7 +27,7 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answer_ids])
 
-    if @test_passage.completed?
+    if @test_passage.completed? 
       redirect_if_time_expired
       @test_passage.update_test_passage_status
       assign_badges
